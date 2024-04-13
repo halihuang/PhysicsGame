@@ -19,7 +19,7 @@ public class Player1Controls : MonoBehaviour
         _playerActions = new PlayerActions();
         _rb = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
-        _playerInput.actions["Force"+_playerNumber].performed += ApplyForce;
+        _playerInput.actions["Force" + _playerNumber].performed += ApplyForce;
     }
 
     private void OnEnable()
@@ -41,17 +41,18 @@ public class Player1Controls : MonoBehaviour
         // apply force to colliding objects
         foreach (var collider in colliders)
         {
-          if (collider.gameObject == _forcePointer || collider.gameObject == gameObject)
-            continue;
+            if (collider.gameObject == _forcePointer || collider.gameObject == gameObject)
+                continue;
 
-      
-          
-          Rigidbody rb = collider.GetComponent<Rigidbody>();
-          if (rb != null) {
-            Debug.Log("Force Applied");
-            rb.AddForce(forceDirection * 1000); // add force to colliding object
-            _rb.AddForce(-forceDirection * 1000); // add force to self in opposite direction
-          }
+
+
+            Rigidbody rb = collider.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Debug.Log("Force Applied");
+                rb.AddForce(forceDirection * 1000); // add force to colliding object
+                _rb.AddForce(-forceDirection * 1000); // add force to self in opposite direction
+            }
         }
     }
 
@@ -64,13 +65,13 @@ public class Player1Controls : MonoBehaviour
         // rotate the force pointer around the player left and right
         if (rotationInput != 0)
             _forcePointer.transform.RotateAround(transform.position, Vector3.forward, rotationInput * _rotationSpeed * Time.deltaTime);
-    }    
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
-         
+
     }
 
     // on draw gizmos
