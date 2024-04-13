@@ -28,7 +28,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             ""id"": ""2181b0a1-144f-41c1-8ee2-bb940bdc3dcd"",
             ""actions"": [
                 {
-                    ""name"": ""Rotate"",
+                    ""name"": ""Rotate1"",
                     ""type"": ""Button"",
                     ""id"": ""a6066c4a-f4a9-4993-a97b-eb2d317fba28"",
                     ""expectedControlType"": ""Button"",
@@ -37,9 +37,27 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Force"",
+                    ""name"": ""Rotate2"",
+                    ""type"": ""Button"",
+                    ""id"": ""66986cd3-3859-40ec-b3d3-25076d3d7e22"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Force1"",
                     ""type"": ""Button"",
                     ""id"": ""2e78864c-6626-4b48-be2f-f72a126b309d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Force2"",
+                    ""type"": ""Button"",
+                    ""id"": ""a636ed71-d232-40ac-9ee5-65b401c95524"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -54,7 +72,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""Rotate1"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -65,7 +83,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""Rotate1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -76,7 +94,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""Rotate1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -87,7 +105,51 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Force"",
+                    ""action"": ""Force1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c0548cbf-89b3-44c4-a3f0-e32a2ca99325"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate2"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b6f3c89f-c7fe-44bb-b4cc-0258ddf0ec16"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""15a4be87-1a6d-439c-935b-57e8d4fe511f"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db889b10-453f-41f0-80dd-2bcd6623e551"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Force2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -104,8 +166,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
 }");
         // PlayerMap
         m_PlayerMap = asset.FindActionMap("PlayerMap", throwIfNotFound: true);
-        m_PlayerMap_Rotate = m_PlayerMap.FindAction("Rotate", throwIfNotFound: true);
-        m_PlayerMap_Force = m_PlayerMap.FindAction("Force", throwIfNotFound: true);
+        m_PlayerMap_Rotate1 = m_PlayerMap.FindAction("Rotate1", throwIfNotFound: true);
+        m_PlayerMap_Rotate2 = m_PlayerMap.FindAction("Rotate2", throwIfNotFound: true);
+        m_PlayerMap_Force1 = m_PlayerMap.FindAction("Force1", throwIfNotFound: true);
+        m_PlayerMap_Force2 = m_PlayerMap.FindAction("Force2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -167,14 +231,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     // PlayerMap
     private readonly InputActionMap m_PlayerMap;
     private List<IPlayerMapActions> m_PlayerMapActionsCallbackInterfaces = new List<IPlayerMapActions>();
-    private readonly InputAction m_PlayerMap_Rotate;
-    private readonly InputAction m_PlayerMap_Force;
+    private readonly InputAction m_PlayerMap_Rotate1;
+    private readonly InputAction m_PlayerMap_Rotate2;
+    private readonly InputAction m_PlayerMap_Force1;
+    private readonly InputAction m_PlayerMap_Force2;
     public struct PlayerMapActions
     {
         private @PlayerActions m_Wrapper;
         public PlayerMapActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Rotate => m_Wrapper.m_PlayerMap_Rotate;
-        public InputAction @Force => m_Wrapper.m_PlayerMap_Force;
+        public InputAction @Rotate1 => m_Wrapper.m_PlayerMap_Rotate1;
+        public InputAction @Rotate2 => m_Wrapper.m_PlayerMap_Rotate2;
+        public InputAction @Force1 => m_Wrapper.m_PlayerMap_Force1;
+        public InputAction @Force2 => m_Wrapper.m_PlayerMap_Force2;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -184,22 +252,34 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerMapActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerMapActionsCallbackInterfaces.Add(instance);
-            @Rotate.started += instance.OnRotate;
-            @Rotate.performed += instance.OnRotate;
-            @Rotate.canceled += instance.OnRotate;
-            @Force.started += instance.OnForce;
-            @Force.performed += instance.OnForce;
-            @Force.canceled += instance.OnForce;
+            @Rotate1.started += instance.OnRotate1;
+            @Rotate1.performed += instance.OnRotate1;
+            @Rotate1.canceled += instance.OnRotate1;
+            @Rotate2.started += instance.OnRotate2;
+            @Rotate2.performed += instance.OnRotate2;
+            @Rotate2.canceled += instance.OnRotate2;
+            @Force1.started += instance.OnForce1;
+            @Force1.performed += instance.OnForce1;
+            @Force1.canceled += instance.OnForce1;
+            @Force2.started += instance.OnForce2;
+            @Force2.performed += instance.OnForce2;
+            @Force2.canceled += instance.OnForce2;
         }
 
         private void UnregisterCallbacks(IPlayerMapActions instance)
         {
-            @Rotate.started -= instance.OnRotate;
-            @Rotate.performed -= instance.OnRotate;
-            @Rotate.canceled -= instance.OnRotate;
-            @Force.started -= instance.OnForce;
-            @Force.performed -= instance.OnForce;
-            @Force.canceled -= instance.OnForce;
+            @Rotate1.started -= instance.OnRotate1;
+            @Rotate1.performed -= instance.OnRotate1;
+            @Rotate1.canceled -= instance.OnRotate1;
+            @Rotate2.started -= instance.OnRotate2;
+            @Rotate2.performed -= instance.OnRotate2;
+            @Rotate2.canceled -= instance.OnRotate2;
+            @Force1.started -= instance.OnForce1;
+            @Force1.performed -= instance.OnForce1;
+            @Force1.canceled -= instance.OnForce1;
+            @Force2.started -= instance.OnForce2;
+            @Force2.performed -= instance.OnForce2;
+            @Force2.canceled -= instance.OnForce2;
         }
 
         public void RemoveCallbacks(IPlayerMapActions instance)
@@ -228,7 +308,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     }
     public interface IPlayerMapActions
     {
-        void OnRotate(InputAction.CallbackContext context);
-        void OnForce(InputAction.CallbackContext context);
+        void OnRotate1(InputAction.CallbackContext context);
+        void OnRotate2(InputAction.CallbackContext context);
+        void OnForce1(InputAction.CallbackContext context);
+        void OnForce2(InputAction.CallbackContext context);
     }
 }

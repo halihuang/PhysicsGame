@@ -1,0 +1,13 @@
+LevelEditor
+- force pad
+- laser death zones
+- win zones
+
+LevelManager
+- load level
+- reset level
+
+Controls
+- fix player input actions
+
+

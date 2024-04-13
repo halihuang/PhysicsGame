@@ -6,7 +6,7 @@
             "id": "2181b0a1-144f-41c1-8ee2-bb940bdc3dcd",
             "actions": [
                 {
-                    "name": "Rotate",
+                    "name": "Rotate1",
                     "type": "Button",
                     "id": "a6066c4a-f4a9-4993-a97b-eb2d317fba28",
                     "expectedControlType": "Button",
@@ -15,9 +15,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Force",
+                    "name": "Rotate2",
+                    "type": "Button",
+                    "id": "66986cd3-3859-40ec-b3d3-25076d3d7e22",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Force1",
                     "type": "Button",
                     "id": "2e78864c-6626-4b48-be2f-f72a126b309d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Force2",
+                    "type": "Button",
+                    "id": "a636ed71-d232-40ac-9ee5-65b401c95524",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -32,7 +50,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "Rotate1",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -43,7 +61,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "Rotate1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -54,7 +72,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "Rotate1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -65,7 +83,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Force",
+                    "action": "Force1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "c0548cbf-89b3-44c4-a3f0-e32a2ca99325",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate2",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b6f3c89f-c7fe-44bb-b4cc-0258ddf0ec16",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "15a4be87-1a6d-439c-935b-57e8d4fe511f",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "db889b10-453f-41f0-80dd-2bcd6623e551",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Force2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
