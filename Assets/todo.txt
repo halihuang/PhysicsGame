@@ -7,7 +7,14 @@ LevelManager
 - load level
 - reset level
 
-Controls
-- fix player input actions
+Freebody Diagram
+- render axises
+- display forces
+
+Menus
+- start game
+- pick level
+
+
 
 

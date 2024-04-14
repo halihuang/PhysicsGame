@@ -2,11 +2,11 @@
     "name": "PlayerActions",
     "maps": [
         {
-            "name": "PlayerMap",
+            "name": "Movement",
             "id": "2181b0a1-144f-41c1-8ee2-bb940bdc3dcd",
             "actions": [
                 {
-                    "name": "Rotate1",
+                    "name": "Rotate",
                     "type": "Button",
                     "id": "a6066c4a-f4a9-4993-a97b-eb2d317fba28",
                     "expectedControlType": "Button",
@@ -15,27 +15,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate2",
-                    "type": "Button",
-                    "id": "66986cd3-3859-40ec-b3d3-25076d3d7e22",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Force1",
+                    "name": "Force",
                     "type": "Button",
                     "id": "2e78864c-6626-4b48-be2f-f72a126b309d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Force2",
-                    "type": "Button",
-                    "id": "a636ed71-d232-40ac-9ee5-65b401c95524",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -44,13 +26,13 @@
             ],
             "bindings": [
                 {
-                    "name": "1D Axis",
+                    "name": "Left KB",
                     "id": "da1b1f78-faac-4654-af9c-317f047f652b",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate1",
+                    "action": "Rotate",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -60,8 +42,8 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Rotate1",
+                    "groups": "KeyboardLeft",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -71,8 +53,41 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
+                    "groups": "KeyboardLeft",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right KB",
+                    "id": "a62f0571-2591-4589-94de-085f0bf5bbb1",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
-                    "action": "Rotate1",
+                    "action": "Rotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "8bdb1b9c-dd86-4b13-bd65-4a38654a2c77",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardRight",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "43ef84fa-009f-45a4-8231-43a19d6cd126",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardRight",
+                    "action": "Rotate",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -82,52 +97,47 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Force1",
+                    "groups": "KeyboardLeft",
+                    "action": "Force",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "c0548cbf-89b3-44c4-a3f0-e32a2ca99325",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate2",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "b6f3c89f-c7fe-44bb-b4cc-0258ddf0ec16",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate2",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "15a4be87-1a6d-439c-935b-57e8d4fe511f",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate2",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "db889b10-453f-41f0-80dd-2bcd6623e551",
+                    "id": "e6b4768a-2526-4414-93fa-d2d328e5b553",
                     "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
+                    "groups": "KeyboardRight",
+                    "action": "Force",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "a4ee9b4d-c2e7-4103-9221-2acc2ef73b70",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "29f7584b-02a2-40df-861c-844b010282cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c9fe5eec-a1f6-42f5-870f-e948dd6361c5",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
-                    "action": "Force2",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -136,9 +146,26 @@
     ],
     "controlSchemes": [
         {
-            "name": "Keyboard and Mouse",
-            "bindingGroup": "Keyboard and Mouse",
-            "devices": []
+            "name": "KeyboardLeft",
+            "bindingGroup": "KeyboardLeft",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "KeyboardRight",
+            "bindingGroup": "KeyboardRight",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }

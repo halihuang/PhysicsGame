@@ -3,37 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player1Controls : MonoBehaviour
+public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeed = 180f;
     [SerializeField] private GameObject _forcePointer;
     [SerializeField] private float _forcePointerRadius = 0.5f;
-    [SerializeField] private string _playerNumber = "1";
-    private PlayerActions _playerActions;
     private Rigidbody _rb;
     private BoxCollider _playerCollider;
     private PlayerInput _playerInput;
 
+    // input actions
+    private InputAction _forceAction;
+    private InputAction _rotateAction;
+
     private void Awake()
     {
-        _playerActions = new PlayerActions();
         _rb = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
-        _playerInput.actions["Force"+_playerNumber].performed += ApplyForce;
+        // print playinput.actions
+        foreach (var action in _playerInput.actions)
+        {
+            Debug.Log(action.name);
+        }
+        _rotateAction = _playerInput.actions["Rotate"];
+        _forceAction = _playerInput.actions["Force"];
+        // add force action callback
+        _forceAction.performed += ApplyForce;
     }
 
-    private void OnEnable()
+    private void ApplyForce(InputAction.CallbackContext obj)
     {
-        _playerActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _playerActions.Disable();
-    }
-
-    private void ApplyForce(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-    {
+        Debug.Log("Force Applied");
         // get the force direction from the force pointer
         Vector3 forceDirection = _forcePointer.transform.position - transform.position;
         // check what the force pointer is colliding with using the box collider
@@ -43,9 +43,6 @@ public class Player1Controls : MonoBehaviour
         {
           if (collider.gameObject == _forcePointer || collider.gameObject == gameObject)
             continue;
-
-      
-          
           Rigidbody rb = collider.GetComponent<Rigidbody>();
           if (rb != null) {
             Debug.Log("Force Applied");
@@ -59,19 +56,19 @@ public class Player1Controls : MonoBehaviour
     private void FixedUpdate()
     {
         // get rotation value from input
-        float rotationInput = _playerActions.PlayerMap.Rotate1.ReadValue<float>();
+        float rotationInput = _rotateAction.ReadValue<float>();
         Debug.Log("Rotation Input: " + rotationInput);
         // rotate the force pointer around the player left and right
         if (rotationInput != 0)
-            _forcePointer.transform.RotateAround(transform.position, Vector3.forward, rotationInput * _rotationSpeed * Time.deltaTime);
+            _forcePointer.transform.RotateAround(transform.position, Vector3.up, rotationInput * _rotationSpeed * Time.deltaTime);
     }    
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    // // Start is called before the first frame update
+    // void Start()
+    // {
          
-    }
+    // }
 
     // on draw gizmos
     private void OnDrawGizmos()
