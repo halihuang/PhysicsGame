@@ -120,9 +120,18 @@
             "id": "a4ee9b4d-c2e7-4103-9221-2acc2ef73b70",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Restart",
                     "type": "Button",
                     "id": "29f7584b-02a2-40df-861c-844b010282cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "70ae272b-0988-496b-8900-a6401b21ebd5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -133,11 +142,22 @@
                 {
                     "name": "",
                     "id": "c9fe5eec-a1f6-42f5-870f-e948dd6361c5",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Restart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b427d3f9-9bd9-48c2-95fe-0dc718af2648",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

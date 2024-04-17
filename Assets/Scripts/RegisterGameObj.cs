@@ -6,14 +6,15 @@ public class RegisterGameObj : MonoBehaviour
 {
     void Awake()
     {
-        //Add this GameObject to gameObjects Dictionary when it is created
         GameManager.instance.gameObjects.Add(gameObject.name, gameObject);
-        Debug.Log("Added " + gameObject.name + " to gameObjects Dictionary");
+        // Debug.Log("Added " + gameObject.name + " to gameObjects Dictionary");   
     }
 
     void OnDestroy()
     {
+        // Debug.Log("Removed " + gameObject.name + " from gameObjects Dictionary");
         //Remove this GameObject from the List when it is about to be destroyed
         GameManager.instance.gameObjects.Remove(gameObject.name);
+
     }
 }

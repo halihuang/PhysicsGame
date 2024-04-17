@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class LevelManager: MonoBehaviour
 {
@@ -9,9 +10,26 @@ public class LevelManager: MonoBehaviour
     // player prefabs
     [SerializeField] private GameObject _player1Prefab;
     [SerializeField] private GameObject _player2Prefab;
+    private PlayerInput _playerInput;
+    private InputAction _restartAction;
+
+    void Awake()
+    {
+        _playerInput = GetComponent<PlayerInput>();
+        _restartAction = _playerInput.actions["Restart"];
+        _restartAction.performed += Restart;
+    }
+
+    void Restart(InputAction.CallbackContext obj)
+    {
+        Debug.Log("Restarting Level");
+        GameManager.instance.loadStage(GameManager.instance.currentLevel);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        SceneManager.SetActiveScene(GameManager.instance.currentScene());
         // load players
         stageComplete = false;
         // // spawn players  
@@ -27,7 +45,7 @@ public class LevelManager: MonoBehaviour
         p2.transform.position = _p2SpawnPoint.position;
     }
 
-        void playerAtGoal()
+    void playerAtGoal()
     {
         if (stageComplete) return;
         GameObject _goalPoint1 = GameManager.instance.gameObjects[Constants.GOAL_POINT1];
@@ -43,6 +61,12 @@ public class LevelManager: MonoBehaviour
             GameManager.instance.loadStage(GameManager.instance.currentLevel + 1);
         }
     }
+
+    void OnDestroy()
+    {
+        _restartAction.performed -= Restart;
+    }
+
 
     // Update is called once per frame
     void Update()

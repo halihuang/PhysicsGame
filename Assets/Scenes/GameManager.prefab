@@ -44,12 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d42b4333220361498197c76ebdf47ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player1Prefab: {fileID: 5632488740826847532, guid: abe56066ce7408c4bb1c5c15b53c9a26, type: 3}
-  _player2Prefab: {fileID: 1669076443807632251, guid: 70ff22d1124526a408726aaa7c11d00b, type: 3}
-  _p1SpawnPoint: {fileID: 0}
-  _p2SpawnPoint: {fileID: 0}
-  _goalPoint1: {fileID: 0}
-  _goalPoint2: {fileID: 0}
+  currentLevel: 0
   levelData:
   - SceneName: Level1
+    SceneDescription: Simple apply force
+  - SceneName: Level2
     SceneDescription: Simple apply force

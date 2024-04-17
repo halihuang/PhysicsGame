@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     // store dict of game objects
     public Dictionary<string, GameObject> gameObjects = new Dictionary<string, GameObject>();
     [SerializeField] public int currentLevel = 0;
+    private bool stageLoaded = false;
 
 
     // define level data type
@@ -23,6 +24,14 @@ public class GameManager : MonoBehaviour
     
     public void loadStage(int level)
     {
+        // unload current level
+        if (stageLoaded)
+        {
+            Debug.Log("Unloading level: " + levelData[currentLevel].SceneName);
+            SceneManager.UnloadSceneAsync(levelData[currentLevel].SceneName);
+            stageLoaded = false;
+        }
+        // set active scene
         currentLevel = level;
         if (levelData.Length <= level)
         {
@@ -31,6 +40,12 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log("Loading level: " + levelData[level].SceneName);
         SceneManager.LoadScene(levelData[level].SceneName, LoadSceneMode.Additive);
+        stageLoaded = true;
+    }
+
+    public Scene currentScene() 
+    {
+        return SceneManager.GetSceneByName(levelData[currentLevel].SceneName);
     }
 
     // Start is called before the first frame update

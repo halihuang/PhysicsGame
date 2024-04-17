@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Camera _camera;
+    private Vector3 _cameraOffset;
+    [SerializeField] private BoxCollider _cameraBounds;
+    [SerializeField] private float _cameraHeightMult = 1f;
+
+
+
+    void Awake()
     {
-        
+        _camera = GetComponent<Camera>();
+        Vector3 center = _cameraBounds.center;
+        // set y enough to see the whole bounds
+        float boundLength = Mathf.Max(_cameraBounds.size.x, _cameraBounds.size.z);
+        float offset = boundLength / (2 * Mathf.Tan(_camera.fieldOfView * 0.5f * Mathf.Deg2Rad));
+        transform.position = new Vector3(center.x, offset * _cameraHeightMult, center.z);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

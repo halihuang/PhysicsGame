@@ -1,20 +1,34 @@
-LevelEditor
-- force pad
-- laser death zones
-- win zones
 
+
+MVP 
+- Freebody Diagram
+	- render axises
+	- display forces
+- MOAR levels
+
+
+Optional
+	LevelEditor
+	- force pad
+	- laser death zones
+
+	Menus
+	- start game
+	- pick level
+	graphics???
+	
+	
+	- text on levels
+
+
+DONE 
+controls
 LevelManager
 - load level
 - reset level
-
-Freebody Diagram
-- render axises
-- display forces
-
-Menus
-- start game
-- pick level
-
+LevelEditor
+- basic tilemaps
+- win zones
 
 
 

@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float _rotationSpeed = 180f;
     [SerializeField] private GameObject _forcePointer;
     [SerializeField] private float _forcePointerRadius = 0.5f;
+    [SerializeField] private float _force = 1000f;
     private Rigidbody _rb;
     private BoxCollider _playerCollider;
     private PlayerInput _playerInput;
@@ -20,15 +21,15 @@ public class PlayerControls : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
-        // print playinput.actions
-        foreach (var action in _playerInput.actions)
-        {
-            Debug.Log(action.name);
-        }
         _rotateAction = _playerInput.actions["Rotate"];
         _forceAction = _playerInput.actions["Force"];
         // add force action callback
         _forceAction.performed += ApplyForce;
+    }
+
+    private void OnDestroy()
+    {
+        _forceAction.performed -= ApplyForce;
     }
 
     private void ApplyForce(InputAction.CallbackContext obj)
@@ -46,8 +47,11 @@ public class PlayerControls : MonoBehaviour
           Rigidbody rb = collider.GetComponent<Rigidbody>();
           if (rb != null) {
             Debug.Log("Force Applied");
-            rb.AddForce(forceDirection * 1000); // add force to colliding object
-            _rb.AddForce(-forceDirection * 1000); // add force to self in opposite direction
+            // normalize the force direction
+            forceDirection.Normalize();
+            Debug.Log("Force Direction: " + forceDirection);
+            rb.AddForce(forceDirection * _force); // add force to colliding object
+            _rb.AddForce(-forceDirection * _force); // add force to self in opposite direction
           }
         }
     }
@@ -63,12 +67,6 @@ public class PlayerControls : MonoBehaviour
             _forcePointer.transform.RotateAround(transform.position, Vector3.up, rotationInput * _rotationSpeed * Time.deltaTime);
     }    
 
-
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-         
-    // }
 
     // on draw gizmos
     private void OnDrawGizmos()

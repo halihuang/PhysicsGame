@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 32278a242bc08894baa4f351ac4263d3, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -131,6 +131,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: currentLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[1].SceneName
+      value: Level2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[1].SceneDescription
+      value: Simple apply force
+      objectReference: {fileID: 0}
     - target: {fileID: 6152225349858730517, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.43067837
