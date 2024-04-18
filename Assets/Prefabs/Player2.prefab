@@ -288,5 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 180
   _forcePointer: {fileID: 37366937899791815}
-  _forcePointerRadius: 0.4
+  _forcePointerWidth: 0.8
+  _forcePointerHeight: 0.4
   _force: 1000

@@ -7,7 +7,8 @@ public class PlayerControls : MonoBehaviour
 {
     [SerializeField] private float _rotationSpeed = 180f;
     [SerializeField] private GameObject _forcePointer;
-    [SerializeField] private float _forcePointerRadius = 0.5f;
+    [SerializeField] private float _forcePointerWidth = 0.5f;
+    [SerializeField] private float _forcePointerHeight = 0.5f;
     [SerializeField] private float _force = 1000f;
     private Rigidbody _rb;
     private BoxCollider _playerCollider;
@@ -38,7 +39,7 @@ public class PlayerControls : MonoBehaviour
         // get the force direction from the force pointer
         Vector3 forceDirection = _forcePointer.transform.position - transform.position;
         // check what the force pointer is colliding with using the box collider
-        Collider[] colliders = Physics.OverlapBox(_forcePointer.transform.position, _forcePointerRadius * Vector3.one);
+        Collider[] colliders = Physics.OverlapBox(_forcePointer.transform.position, new Vector3(_forcePointerWidth, _forcePointerWidth,  _forcePointerHeight));
         // apply force to colliding objects
         foreach (var collider in colliders)
         {
@@ -71,6 +72,6 @@ public class PlayerControls : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_forcePointer.transform.position, _forcePointerRadius * Vector3.one);
+        Gizmos.DrawWireCube(_forcePointer.transform.position, new Vector3(_forcePointerWidth, _forcePointerWidth, _forcePointerHeight));
     }
 }
