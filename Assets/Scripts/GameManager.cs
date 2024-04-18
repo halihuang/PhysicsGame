@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int currentLevel = 0;
     public bool stageLoaded = false;
     public bool restartRequested = false;
-
+    private BlackLoadCover loadCover;
 
     // define level data type
     [System.Serializable]
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         // unload current level
         if (stageLoaded)
         {
+            loadCover.FadeToBlack();
             stageLoaded = false;
             Debug.Log("Unloading level: " + levelData[currentLevel].SceneName);
             SceneManager.UnloadSceneAsync(levelData[currentLevel].SceneName);
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loading level: " + levelData[level].SceneName);
         SceneManager.LoadScene(levelData[level].SceneName, LoadSceneMode.Additive);
         stageLoaded = true;
+        loadCover.FadeFromBlack();
     }
 
     public Scene currentScene() 
@@ -59,6 +61,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }  
+
+        DontDestroyOnLoad(gameObject);      
+        // get load cover script
+        loadCover = GameObject.Find("LoadCover").GetComponent<BlackLoadCover>();  
     }
   
 
