@@ -12,6 +12,8 @@ public class LevelManager: MonoBehaviour
     [SerializeField] private GameObject _player2Prefab;
     private PlayerInput _playerInput;
     private InputAction _restartAction;
+    private GameObject _player1;
+    private GameObject _player2;
 
     void Awake()
     {
@@ -33,8 +35,11 @@ public class LevelManager: MonoBehaviour
         // load players
         stageComplete = false;
         // // spawn players  
-        PlayerInput.Instantiate(_player1Prefab, controlScheme: "KeyboardLeft", pairWithDevice: Keyboard.current);
-        PlayerInput.Instantiate(_player2Prefab, controlScheme: "KeyboardRight", pairWithDevice: Keyboard.current);
+        var p1Input = PlayerInput.Instantiate(_player1Prefab, controlScheme: "KeyboardLeft", pairWithDevice: Keyboard.current);
+        var p2Input = PlayerInput.Instantiate(_player2Prefab, controlScheme: "KeyboardRight", pairWithDevice: Keyboard.current);
+        _player1 = p1Input.gameObject;
+        _player2 = p2Input.gameObject;
+
         // move players to spawn point
         GameObject p1= GameObject.Find("Player1(Clone)");
         GameObject p2 = GameObject.Find("Player2(Clone)");
@@ -53,6 +58,16 @@ public class LevelManager: MonoBehaviour
         if (_goalPoint1 == null || _goalPoint2 == null) return;
         bool _isPlayer1AtGoal = _goalPoint1.GetComponent<DetectGoal>().isPlayerAtGoal;
         bool _isPlayer2AtGoal = _goalPoint2.GetComponent<DetectGoal>().isPlayerAtGoal;
+
+        // delete players if they are at goal
+        if (_isPlayer1AtGoal)
+        {
+            Destroy(_player1);
+        }
+        if (_isPlayer2AtGoal)
+        {
+            Destroy(_player2);
+        }
         if (_isPlayer1AtGoal && _isPlayer2AtGoal)
         {
             Debug.Log("Both players at goal");

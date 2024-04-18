@@ -10,9 +10,11 @@ public class KillLaser : MonoBehaviour
         {
             Debug.Log("Player Hit");
             // play death animation
-
             // restart level
-            GameManager.instance.loadStage(GameManager.instance.currentLevel);
+            if (!GameManager.instance.restartRequested)
+            {
+                GameManager.instance.restartRequested = true;
+            }
         }
     }
 }

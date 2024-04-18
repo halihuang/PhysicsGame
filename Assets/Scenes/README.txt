@@ -4,3 +4,8 @@ Adding new levels
 - add grid + tileset
 - use brush to add P1+P2 spawns and checkpoint 
 - add scene to build setts (File -> Build Settings)
+
+
+level ideas?
+- ping pong using mass
+- something involving a complete stop

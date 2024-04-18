@@ -34,7 +34,7 @@ public class PlayerControls : MonoBehaviour
 
     private void ApplyForce(InputAction.CallbackContext obj)
     {
-        Debug.Log("Force Applied");
+        Debug.Log("Force Attempt");
         // get the force direction from the force pointer
         Vector3 forceDirection = _forcePointer.transform.position - transform.position;
         // check what the force pointer is colliding with using the box collider
@@ -46,10 +46,10 @@ public class PlayerControls : MonoBehaviour
             continue;
           Rigidbody rb = collider.GetComponent<Rigidbody>();
           if (rb != null) {
-            Debug.Log("Force Applied");
             // normalize the force direction
             forceDirection.Normalize();
             Debug.Log("Force Direction: " + forceDirection);
+            Debug.Log("Force: " + forceDirection * _force);
             rb.AddForce(forceDirection * _force); // add force to colliding object
             _rb.AddForce(-forceDirection * _force); // add force to self in opposite direction
           }
@@ -61,7 +61,6 @@ public class PlayerControls : MonoBehaviour
     {
         // get rotation value from input
         float rotationInput = _rotateAction.ReadValue<float>();
-        Debug.Log("Rotation Input: " + rotationInput);
         // rotate the force pointer around the player left and right
         if (rotationInput != 0)
             _forcePointer.transform.RotateAround(transform.position, Vector3.up, rotationInput * _rotationSpeed * Time.deltaTime);

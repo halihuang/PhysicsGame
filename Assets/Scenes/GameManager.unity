@@ -133,19 +133,56 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: currentLevel
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: levelData.Array.size
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: levelData.Array.data[1].SceneName
       value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[2].SceneName
+      value: Level3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[3].SceneName
+      value: Level4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[4].SceneName
+      value: Level5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[5].SceneName
+      value: Level6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[0].SceneDescription
+      value: equal opposite easy, 1 player pushes other to push both into goal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: levelData.Array.data[1].SceneDescription
-      value: Simple apply force
+      value: 'equal opposite adv, p2 has to send object to p1 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[2].SceneDescription
+      value: obj in motion remains in motion, p2 has to send object to moving p1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[3].SceneDescription
+      value: 'obj in motion remains in motion, both moving '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[4].SceneDescription
+      value: obj in motion remains in motion, p1 has to move self to moving p1 to
+        save
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: levelData.Array.data[5].SceneDescription
+      value: mass, introduce mass
       objectReference: {fileID: 0}
     - target: {fileID: 6152225349858730517, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: m_LocalPosition.x
