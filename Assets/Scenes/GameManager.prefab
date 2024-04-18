@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d42b4333220361498197c76ebdf47ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
+  currentLevel: 2
+  stageLoaded: 0
+  restartRequested: 0
   levelData:
   - SceneName: Level1
     SceneDescription: Simple apply force

@@ -133,7 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: currentLevel
-      value: 5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
+      propertyPath: restartRequested
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5308505867761607132, guid: ba891c2b85f644946938c3a624eefbdc, type: 3}
       propertyPath: levelData.Array.size
