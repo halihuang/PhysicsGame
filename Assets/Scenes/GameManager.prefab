@@ -44,11 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d42b4333220361498197c76ebdf47ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 5
+  currentLevel: 0
   stageLoaded: 0
   restartRequested: 0
   levelData:
   - SceneName: Level1
-    SceneDescription: Simple apply force
+    SceneDescription: equal opposite easy, 1 player pushes other to push both into
+      goal
   - SceneName: Level2
-    SceneDescription: Simple apply force
+    SceneDescription: 'equal opposite adv, p2 has to send object to p1 '
+  - SceneName: Level3
+    SceneDescription: obj in motion remains in motion, p2 has to send object to moving
+      p1
+  - SceneName: Level4
+    SceneDescription: 'obj in motion remains in motion, both moving '
+  - SceneName: Level5
+    SceneDescription: obj in motion remains in motion, p1 has to move self to moving
+      p1 to save
+  - SceneName: Level6
+    SceneDescription: mass, introduce mass

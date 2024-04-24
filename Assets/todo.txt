@@ -1,34 +1,35 @@
 
 
 MVP 
+- Control Display
+
+Optional
 - Freebody Diagram
 	- render axises
 	- display forces
-- MOAR levels
-
-
-Optional
-	LevelEditor
-	- force pad
-	- laser death zones
-
-	Menus
-	- start game
-	- pick level
-	graphics???
-	
-	
-	- text on levels
-
+- Story Component
+	- professor newton
+	- dialogue system
+	- boss battles
+- more levels
+	- gravity
+- pause mechanic
+- graphics
+	- dark and glowy?
+	- particle effects for force apply / laser touch / goal touch
 
 DONE 
 controls
 LevelManager
 - load level
 - reset level
-LevelEditor
+- fade on load
+LevelEditor + 6 stages
 - basic tilemaps
 - win zones
-
-
-
+- force pad
+- laser death zones
+UI
+- main menu 
+- level select
+- esc menu to go back to menu

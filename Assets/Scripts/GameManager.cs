@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     // store dict of game objects
     public Dictionary<string, GameObject> gameObjects = new Dictionary<string, GameObject>();
-    [SerializeField] public int currentLevel = 0;
+    [SerializeField] public int currentLevel = -1;
     public bool stageLoaded = false;
     public bool restartRequested = false;
     private BlackLoadCover loadCover;
@@ -21,17 +21,14 @@ public class GameManager : MonoBehaviour
         public string SceneDescription;
     }
     // define level data dictionary
-    [SerializeField] private LevelData[] levelData;
+    [SerializeField] public LevelData[] levelData;
     
     public void loadStage(int level)
     {
         // unload current level
         if (stageLoaded)
         {
-            loadCover.FadeToBlack();
-            stageLoaded = false;
-            Debug.Log("Unloading level: " + levelData[currentLevel].SceneName);
-            SceneManager.UnloadSceneAsync(levelData[currentLevel].SceneName);
+            unloadStage(levelData[currentLevel].SceneName);
         }
         // set active scene
         currentLevel = level;
@@ -44,6 +41,29 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(levelData[level].SceneName, LoadSceneMode.Additive);
         stageLoaded = true;
         loadCover.FadeFromBlack();
+    }
+
+
+    public void unloadStage(string stage)
+    {   
+        loadCover.FadeToBlack();
+        stageLoaded = false;
+        Debug.Log("Unloading level: " + stage);
+        SceneManager.UnloadSceneAsync(stage);
+    }
+
+    public void loadMainMenu()
+    {
+        unloadStage(levelData[currentLevel].SceneName);
+        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+        currentLevel = -1;
+        loadCover.FadeFromBlack();
+        UIManager.instance.toggleMenu();
+    }
+
+    public void exitGame()
+    {
+        Application.Quit();
     }
 
     public Scene currentScene() 
@@ -70,8 +90,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // load first stage
-        loadStage(currentLevel);
+        // load menu
+        SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
     }
 
     void Update()
