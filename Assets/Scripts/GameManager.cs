@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DialogueEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         public string SceneName;
         public string SceneDescription;
+        public NPCConversation SceneDialogue;
     }
     // define level data dictionary
     [SerializeField] public LevelData[] levelData;
@@ -36,6 +38,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Complete");
             return;
+        }
+        // check if level has dialogue
+        if (levelData[level].SceneDialogue != null)
+        {
+            ConversationManager.Instance.StartConversation(levelData[level].SceneDialogue);
         }
         Debug.Log("Loading level: " + levelData[level].SceneName);
         SceneManager.LoadScene(levelData[level].SceneName, LoadSceneMode.Additive);

@@ -1,19 +1,17 @@
 
 
 MVP 
-- Control Display
+- Control Display in esc menu
+- pause mechanic
 
 Optional
 - Freebody Diagram
 	- render axises
 	- display forces
 - Story Component
-	- professor newton
-	- dialogue system
 	- boss battles
 - more levels
 	- gravity
-- pause mechanic
 - graphics
 	- dark and glowy?
 	- particle effects for force apply / laser touch / goal touch
