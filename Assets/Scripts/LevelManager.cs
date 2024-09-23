@@ -25,7 +25,7 @@ public class LevelManager: MonoBehaviour
     void Restart(InputAction.CallbackContext obj)
     {
         Debug.Log("Restarting Level");
-        GameManager.instance.loadStage(GameManager.instance.currentLevel);
+        GameManager.instance.restartRequested = true;
     }
 
     // Start is called before the first frame update
@@ -52,7 +52,12 @@ public class LevelManager: MonoBehaviour
 
     void playerAtGoal()
     {
-        if (stageComplete) return;
+        if (stageComplete) {
+          if (!DialogueManager.Instance.conversationActive) {
+              GameManager.instance.loadStage(GameManager.instance.currentLevel + 1);
+          }
+          return;
+        }
         GameObject _goalPoint1 = GameManager.instance.gameObjects[Constants.GOAL_POINT1];
         GameObject _goalPoint2 = GameManager.instance.gameObjects[Constants.GOAL_POINT2];
         if (_goalPoint1 == null || _goalPoint2 == null) return;
@@ -71,9 +76,9 @@ public class LevelManager: MonoBehaviour
         if (_isPlayer1AtGoal && _isPlayer2AtGoal)
         {
             Debug.Log("Both players at goal");
+            // wait to load next stage after dialogue ends
             stageComplete = true;
-            // load next stage
-            GameManager.instance.loadStage(GameManager.instance.currentLevel + 1);
+            AudioManager.instance.PlaySFX(1);
         }
     }
 

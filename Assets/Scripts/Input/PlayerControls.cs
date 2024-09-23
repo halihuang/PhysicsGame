@@ -17,6 +17,9 @@ public class PlayerControls : MonoBehaviour
     // input actions
     private InputAction _forceAction;
     private InputAction _rotateAction;
+    
+    // 
+    private bool _forceCooldown = false;
 
     private void Awake()
     {
@@ -35,7 +38,10 @@ public class PlayerControls : MonoBehaviour
 
     private void ApplyForce(InputAction.CallbackContext obj)
     {
+        if (_forceCooldown)
+            return;
         Debug.Log("Force Attempt");
+        _forceCooldown = true;
         // get the force direction from the force pointer
         Vector3 forceDirection = _forcePointer.transform.position - transform.position;
         // check what the force pointer is colliding with using the box collider
@@ -53,6 +59,8 @@ public class PlayerControls : MonoBehaviour
             Debug.Log("Force: " + forceDirection * _force);
             rb.AddForce(forceDirection * _force); // add force to colliding object
             _rb.AddForce(-forceDirection * _force); // add force to self in opposite direction
+            AudioManager.instance.PlaySFX(0); // play sfx
+            break;
           }
         }
     }
@@ -65,7 +73,16 @@ public class PlayerControls : MonoBehaviour
         // rotate the force pointer around the player left and right
         if (rotationInput != 0)
             _forcePointer.transform.RotateAround(transform.position, Vector3.up, rotationInput * _rotationSpeed * Time.deltaTime);
+        // reset force cooldown after 0.5 seconds
+        if (_forceCooldown)
+            StartCoroutine(ResetForceCooldown());
     }    
+
+    private IEnumerator ResetForceCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _forceCooldown = false;
+    }
 
 
     // on draw gizmos

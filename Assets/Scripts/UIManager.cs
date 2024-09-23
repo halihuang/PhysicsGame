@@ -25,7 +25,10 @@ public class UIManager : MonoBehaviour
         // add callback for menu input
         var playerInput = GetComponent<PlayerInput>();
         var menuAction = playerInput.actions["Menu"];
+        var pauseAction = playerInput.actions["Pause"];
         menuAction.performed += ToggleMenu;
+        pauseAction.performed += TogglePause;
+
         DontDestroyOnLoad(gameObject);      
     }
 
@@ -50,5 +53,23 @@ public class UIManager : MonoBehaviour
         _menuVisible = !_menuVisible; 
     }
 
+    public void togglePause()
+    {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+    }
 
+    void TogglePause(InputAction.CallbackContext obj)
+    {
+        if (GameManager.instance.currentLevel > -1)
+        {
+            togglePause();
+        }
+    }
 }

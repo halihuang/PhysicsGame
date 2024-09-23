@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool stageLoaded = false;
     public bool restartRequested = false;
     private BlackLoadCover loadCover;
+    private float gravity = 1f;
 
     // define level data type
     [System.Serializable]
@@ -21,11 +22,13 @@ public class GameManager : MonoBehaviour
         public string SceneName;
         public string SceneDescription;
         public NPCConversation SceneDialogue;
+        public AudioClip SceneMusic;
+        public bool gravityEnabled = false;
     }
     // define level data dictionary
     [SerializeField] public LevelData[] levelData;
     
-    public void loadStage(int level)
+    public void loadStage(int level, bool showDialogue = true)
     {
         // unload current level
         if (stageLoaded)
@@ -39,15 +42,22 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game Complete");
             return;
         }
-        // check if level has dialogue
-        if (levelData[level].SceneDialogue != null)
-        {
-            ConversationManager.Instance.StartConversation(levelData[level].SceneDialogue);
-        }
         Debug.Log("Loading level: " + levelData[level].SceneName);
         SceneManager.LoadScene(levelData[level].SceneName, LoadSceneMode.Additive);
         stageLoaded = true;
         loadCover.FadeFromBlack();
+        if (showDialogue)
+        {
+            // start dialogue
+            DialogueManager.Instance.StartConversation(level);
+        }
+        // play music
+        if (levelData[level].SceneMusic != null)
+        {
+            AudioManager.instance.PlayMusic(levelData[level].SceneMusic);
+        }
+        // set gravity
+        Physics.gravity = levelData[level].gravityEnabled ? new Vector3(0, 0, -gravity) : new Vector3(0, 0, 0);
     }
 
 
@@ -66,6 +76,8 @@ public class GameManager : MonoBehaviour
         currentLevel = -1;
         loadCover.FadeFromBlack();
         UIManager.instance.toggleMenu();
+        DialogueManager.Instance.EndExistingConversation();
+        AudioManager.instance.StopMusic();
     }
 
     public void exitGame()
@@ -106,7 +118,7 @@ public class GameManager : MonoBehaviour
         if (restartRequested)
         {
             restartRequested = false;
-            loadStage(currentLevel);
+            loadStage(currentLevel, false);
         }
     }
 }
